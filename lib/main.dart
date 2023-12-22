@@ -1,4 +1,6 @@
 //import 'dart:html';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -21,7 +23,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  //File ? selected_image;
+  File ? selected_image;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,7 +59,7 @@ class _HomePageState extends State<HomePage> {
     final returnedimage = await ImagePicker().pickImage(source: ImageSource.camera);
 
     setState(() {
-      //selected_image = File(returnedimage!.path as List<Object>);
+      selected_image = File(returnedimage!.path);
     });
   }
 }
