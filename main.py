@@ -2,7 +2,7 @@ import TableExtractor as te
 
 import cv2
 
-path_to_image = "C:/Users/Prakhar/OneDrive/Desktop/btp/yyy.png"
+path_to_image = "D:/demo/img.png"
 table_extractor = te.TableExtractor(path_to_image)
 perspective_corrected_image = table_extractor.execute()
 cv2.imshow("perspective_corrected_image", perspective_corrected_image)

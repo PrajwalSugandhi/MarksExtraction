@@ -1,6 +1,6 @@
 //import 'dart:html';
 import 'dart:io';
-
+import 'package:btp/Python.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -23,7 +23,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  File ? selected_image;
+  late File selected_image;
+  late Python python;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,21 +47,27 @@ class _HomePageState extends State<HomePage> {
           child: IconButton(
 
             icon: Icon(Icons.camera_alt),
-            onPressed: (){
+            onPressed: () {
               _pickImagefromCamera();
+
             },
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+          onPressed: (){
+            python = Python(image: selected_image);
+            python.initialize("python", "main.py", false);
+            //Navigator.push(context, MaterialPageRoute(builder: (context) => Demo(image: selected_image)));
+          },
       ),
     );
   }
 
   Future _pickImagefromCamera() async {
     final returnedimage = await ImagePicker().pickImage(source: ImageSource.camera);
+    selected_image = File(returnedimage!.path);
 
-    setState(() {
-      selected_image = File(returnedimage!.path);
-    });
   }
 }
 

@@ -3,7 +3,7 @@ import numpy as np
 
 class TableExtractor:
 
-    def _init_(self, image_path):
+    def __init__(self, image_path):
         self.image_path = image_path
 
     def execute(self):
@@ -139,5 +139,5 @@ class TableExtractor:
         return rect
 
     def store_process_image(self, file_name, image):
-        path = "C:/Users/Prakhar/OneDrive/Desktop/btp" + file_name
+        path = "D:/demo" + file_name
         cv2.imwrite(path, image)
