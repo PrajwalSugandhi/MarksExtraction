@@ -58,6 +58,7 @@ class _HomePageState extends State<HomePage> {
           onPressed: (){
             python = Python(image: selected_image);
             python.initialize("python", "main.py", false);
+            python.croptable();
             //Navigator.push(context, MaterialPageRoute(builder: (context) => Demo(image: selected_image)));
           },
       ),
